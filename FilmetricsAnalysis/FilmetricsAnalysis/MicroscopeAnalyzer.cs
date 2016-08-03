@@ -10,6 +10,7 @@ namespace FilmetricsAnalysis
     class MicroscopeAnalyzer
     {
         public FIRemote mFIRemote;
+        public string mReferenceMaterial;
 
         // If mLastRet = 1, it means that something has gone wrong in the previous step
         public int mLastRet = 0;
@@ -40,6 +41,14 @@ namespace FilmetricsAnalysis
 
         // ----------------------------------- Methods ---------------------------------------------
 
+        /*  Baseline Step 0 : Obtains the reference material from the user    */
+        public void obtainRefMat()
+        {
+            Console.WriteLine("Please type in which material you are referencing.");
+            mReferenceMaterial = Console.ReadLine();
+            mFIRemote.BaselineSetRefMat(mReferenceMaterial);
+        }
+
         /*  Baseline Step 1 : Acquire sample reflectance     */
         public void BaselineStep1()
         {
@@ -66,7 +75,7 @@ namespace FilmetricsAnalysis
         public void BaselineStep2()
         {
             Console.WriteLine("Please type in which reference material you are referencing");
-            mFIRemote.BaselineSetRefMat(Console.ReadLine());
+            mFIRemote.BaselineSetRefMat(mReferenceMaterial);
 
             Console.WriteLine("I am now acquiring reference standard");
             try
@@ -157,13 +166,16 @@ namespace FilmetricsAnalysis
         }
 
         /* 
-        **  Acquires a baseline, does all three steps sequentially.
+        **  Acquires a baseline, does all 0-4 steps sequentially.
         **  Returns 1 if an error occured, 0 if baseline is successfully taken.
         **  */
         public void AcquireBaseline()
         {
-            Console.WriteLine("Enter in anything to try to take a baseline");
+            Console.WriteLine("Enter in anything to begin the baseline procedure.");
             Console.ReadLine();
+
+            // Step 0
+            obtainRefMat();
 
             // Step 1
             Console.WriteLine("Please focus the microscope and prepare to takeoff to step 1 (or to take a sample reflectance)!");
@@ -176,7 +188,7 @@ namespace FilmetricsAnalysis
             }
 
             // Step 2
-            Console.WriteLine("Please focus the microscope and prepare to takeoff to step 2 (or to take a reflectance standard)!");
+            Console.WriteLine("Enter in anything to continue the journey to step 2 (aka to take a reflectance standard)!");
             Console.ReadLine();
             BaselineStep2();
             if (mLastRet == 1)
@@ -186,7 +198,7 @@ namespace FilmetricsAnalysis
             }
 
             // Step 3
-            Console.WriteLine("Please focus the microscope and prepare to takeoff to step 3 (or to acquire background)!");
+            Console.WriteLine("Enter in anything to continue the journey to step 3 (aka to acquire background)!");
             Console.ReadLine();
             BaselineStep3();
             if (mLastRet == 1)
@@ -196,7 +208,7 @@ namespace FilmetricsAnalysis
             }
 
             // Step 4
-            Console.WriteLine("Please focus the microscope and prepare to takeoff to step 4 (or to commit baseline)!");
+            Console.WriteLine("Enter in anything to continue the journey to step 4 (aka to commit baseline)!");
             Console.ReadLine();
             BaselineStep4();
             if (mLastRet == 1)
