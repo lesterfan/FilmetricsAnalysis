@@ -10,11 +10,6 @@ namespace FilmetricsAnalysis
     class MicroscopeAnalyzer
     {
         public FIRemote mFIRemote;
-        public float[] mWaveLengths;
-        public float[] mData;
-        public int mCenterPtIdx;
-
-        public bool mHasMultipleMeasurementChannels;
 
         // If mLastRet = 1, it means that something has gone wrong in the previous step
         public int mLastRet = 0;
@@ -203,43 +198,6 @@ namespace FilmetricsAnalysis
             {
                 Console.WriteLine("Error! Something went wrong in the last step!");
                 return;
-            }
-        }
-
-
-        /*
-         * Acquires spectrum. Throws an error (Makes mLastRet = 1 and logs) when there is no baseline made.
-         * */
-        public void AcquireSpectrum()
-        {
-
-            try
-            {
-                mFIRemote.AcquireSpectrum(ref mWaveLengths, ref mData);
-                mCenterPtIdx = mWaveLengths.GetUpperBound(0) / 2;
-                Console.WriteLine("Spectrum sucessfully acquired. Center data point is Wavelength = " + mWaveLengths[mCenterPtIdx] + "nm, Reflectance = " + mData[mCenterPtIdx] * 100);
-                mLastRet = 0;
-            }
-            catch (Filmetrics.FIRemote.AcquisitionException e)
-            {
-                switch (e.Type)
-                {
-                    case Filmetrics.FIRemote.AcquisitionException.ExceptionType.Saturation:
-                        Console.WriteLine("Spectrometer saturation. Repeat baseline or reduce integration time if acquisition settings measurement timing is set to manual.");
-                        break;
-                    case Filmetrics.FIRemote.AcquisitionException.ExceptionType.InvalidAcquisitionSettings:
-                        Console.WriteLine("Invalid acquisition settings. Verify that a valid baseline has been established.");
-                        break;
-                    case Filmetrics.FIRemote.AcquisitionException.ExceptionType.Unknown:
-                        Console.WriteLine("Unknown acquisition error.");
-                        break;
-                }
-                mLastRet = 1;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception caught! " + e.ToString());
-                mLastRet = 1;
             }
         }
 
