@@ -10,6 +10,10 @@ namespace FilmetricsAnalysis
     {
         static void Main(string[] args)
         {
+            MicroscopeAnalyzer mAnalyzer = new MicroscopeAnalyzer();
+
+            mAnalyzer.AcquireBaseline();
+            if (mAnalyzer.mLastRet == 1) Console.WriteLine("Error!");
         }
     }
 }
