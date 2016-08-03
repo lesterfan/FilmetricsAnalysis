@@ -74,9 +74,6 @@ namespace FilmetricsAnalysis
         /*  Baseline Step 2 : Acquire reference standard   */
         public void BaselineStep2()
         {
-            Console.WriteLine("Please type in which reference material you are referencing");
-            mFIRemote.BaselineSetRefMat(mReferenceMaterial);
-
             Console.WriteLine("I am now acquiring reference standard");
             try
             {
@@ -111,6 +108,7 @@ namespace FilmetricsAnalysis
         /*  Baseline Step 3 : Take background   */
         public void BaselineStep3()
         {
+            Console.WriteLine("Now taking a background.");
             try
             {
                 mFIRemote.BaselineAcquireBackgroundAfterRef();
