@@ -14,8 +14,6 @@ namespace FilmetricsAnalysis
 
             mAnalyzer.AcquireBaseline();
             if (mAnalyzer.mLastRet == 1) Console.WriteLine("Error!");
-
-            Console.WriteLine("Testing!");
         }
     }
 }
