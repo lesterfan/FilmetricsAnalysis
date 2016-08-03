@@ -17,9 +17,11 @@ namespace FilmetricsAnalysis
         // Constructor
         public MicroscopeAnalyzer(bool show_gui = true)
         {
+            Console.WriteLine("Welcome to Filmetrics Analyzer - HMNL (c) 2016");
             try
             {
                 mFIRemote = new FIRemote(true);
+                Console.WriteLine("Software was successfully connected to the microscope!");
                 mLastRet = 0;
             }
             catch (FIRemote.InitializationFailureException e)
@@ -160,7 +162,6 @@ namespace FilmetricsAnalysis
         **  */
         public void AcquireBaseline()
         {
-            Console.WriteLine("Welcome to Filmetrics Analyzer - HMNL (c) 2016");
             Console.WriteLine("Enter in anything to try to take a baseline");
             Console.ReadLine();
 
