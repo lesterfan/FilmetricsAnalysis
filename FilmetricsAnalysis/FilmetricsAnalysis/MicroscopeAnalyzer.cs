@@ -104,6 +104,7 @@ namespace FilmetricsAnalysis
                 mLastRet = 1;
             }
         }
+        // current file directory : C:\ProgramData\Filmetrics\Material
 
         /*  Baseline Step 3 : Take background   */
         public void BaselineStep3()
