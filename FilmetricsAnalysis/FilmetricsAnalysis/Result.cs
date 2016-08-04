@@ -14,6 +14,9 @@ namespace FilmetricsAnalysis
 
     public class Result
     {
+        public string ret;
+
+
         public bool AlarmTriggered { get; }
         public float GOF { get; }
         public bool GofIsOK { get; }

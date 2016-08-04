@@ -15,9 +15,6 @@ namespace FilmetricsAnalysis
         public string mReferenceMaterial;
         public Result mMeasuredResults;
 
-        // Test : If loaded from save, it will be a different value
-        public string mTestString;
-
         // If mLastRet = 1, it means that something has gone wrong in the previous step
         public int mLastRet = 0;
 
@@ -297,21 +294,21 @@ namespace FilmetricsAnalysis
         }
 
         /* 
-        **  Saves the current state of MicroscopeAnalyzer variable to an .xml file 
+        **  Saves the current mMeasurementResults object to an .xml file in directory specified by the user
         **  @param fileDir : directory that it should be saved in
         **  @param userInput : the name that the file should be stored as
         **  */
-        public void SaveMyselfTo(string fileDir, string userInput)
+        public void SaveResultsTo(string fileDir, string userInput)
         {
             Console.WriteLine("Now saving myself to " + fileDir + userInput + ".xml");
 
             try {
-                XmlSerializer ser = new XmlSerializer(typeof(MicroscopeAnalyzer));
+                XmlSerializer ser = new XmlSerializer(typeof(Result));
 
                 // Deserialize the variable from the specific directory indicated by user.
                 using (var stream = File.Create(fileDir + userInput + ".xml"))
                 {
-                    ser.Serialize(stream, this);
+                    ser.Serialize(stream, mMeasuredResults);
                 }
 
                 Console.WriteLine("I saved myself!");
@@ -329,19 +326,19 @@ namespace FilmetricsAnalysis
         **  @param fileDir : directory that it should be saved in
         **  @param userInput : the name that the file should be stored as
         **  */
-        public static MicroscopeAnalyzer LoadMicroscopeAnalyzerFrom(string fileDir, string userInput)
+        public static Result LoadMicroscopeAnalyzerFrom(string fileDir, string userInput)
         {
             Console.WriteLine("Now loading myself to " + fileDir + userInput + ".xml");
 
             try
             {
-                XmlSerializer ser = new XmlSerializer(typeof(MicroscopeAnalyzer));
+                XmlSerializer ser = new XmlSerializer(typeof(Result));
 
-                MicroscopeAnalyzer result;
+                Result result;
 
                 using (var stream = File.OpenRead(fileDir + userInput + ".xml"))
                 {
-                    result = (MicroscopeAnalyzer)ser.Deserialize(stream);
+                    result = (Result)ser.Deserialize(stream);
                 }
                 Console.WriteLine("Successfully loaded!");
 

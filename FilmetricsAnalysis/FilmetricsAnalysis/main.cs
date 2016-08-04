@@ -27,7 +27,7 @@ namespace FilmetricsAnalysis
                 }
                 else if (input == "s")                                // Current file directory : C:\ProgramData\Filmetrics\Material
                 {
-                    mAnalyzer.mTestString = "Saved!";
+                    mAnalyzer.mMeasuredResults.ret = "Saved!";
 
                     Console.WriteLine("Please enter in the name of the file you want it to be saved in.");
                     Console.WriteLine("The program will automatically save it as a '.fmspe' file. ");
@@ -37,7 +37,7 @@ namespace FilmetricsAnalysis
                    
                     mAnalyzer.SaveSpectrum(currFileDir, user_input);
                     if (mAnalyzer.mLastRet == 1) Console.WriteLine("Something went wrong in the last step!");
-                    mAnalyzer.SaveMyselfTo(currFileDir, user_input);
+                    mAnalyzer.SaveResultsTo(currFileDir, user_input);
                     if (mAnalyzer.mLastRet == 1) Console.WriteLine("Something went wrong in the last step!");
                 }
                 else if (input == "l")
@@ -48,16 +48,16 @@ namespace FilmetricsAnalysis
                     string currFileDir = "C:/Users/HMNL/Documents/Test/";
                     string user_input = Console.ReadLine();
 
-                    MicroscopeAnalyzer loaded_analyzer = MicroscopeAnalyzer.LoadMicroscopeAnalyzerFrom(currFileDir, user_input);
+                    Result loaded_result = MicroscopeAnalyzer.LoadMicroscopeAnalyzerFrom(currFileDir, user_input);
                     
-                    if (loaded_analyzer == null)
+                    if (loaded_result == null)
                     {
                         Console.WriteLine("Something wrong in the last step!");
                         continue;
                     }
 
                     Console.WriteLine("Load successful!");
-                    Console.WriteLine("The loaded mTestString is " + loaded_analyzer.mTestString);
+                    Console.WriteLine("The loaded mTestString is " + loaded_result.ret);
                 }
             }
         }
