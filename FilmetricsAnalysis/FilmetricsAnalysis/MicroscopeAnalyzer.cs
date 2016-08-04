@@ -106,6 +106,9 @@ namespace FilmetricsAnalysis
         }
         // current file directory : C:\ProgramData\Filmetrics\Material
 
+        //while (munchkinsInBox){
+            //Lester.eatMunchkin()}
+
         /*  Baseline Step 3 : Take background   */
         public void BaselineStep3()
         {
