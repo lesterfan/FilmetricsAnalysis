@@ -26,8 +26,8 @@ namespace FilmetricsAnalysis
                 {
                     Console.WriteLine("Please enter in the name of the file you want it to be saved in.");
                     Console.WriteLine("The program will automatically save it as a '.fmspe' file. ");
-                    Console.WriteLine("For now, all files will be saved in directory 'C:/ProgramData/Filmetrics/Material/' ");
-                    string currFileDir = "C:/ProgramData/Filmetrics/Material/";
+                    Console.WriteLine("For now, all files will be saved in directory 'C:/Users/HMNL/Documents/Test/' ");
+                    string currFileDir = "C:/Users/HMNL/Documents/Test/";
                     string user_input = Console.ReadLine();
                    
 
