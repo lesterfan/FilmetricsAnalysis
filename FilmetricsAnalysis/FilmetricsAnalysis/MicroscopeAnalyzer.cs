@@ -11,7 +11,7 @@ namespace FilmetricsAnalysis
     {
         public FIRemote mFIRemote;
         public string mReferenceMaterial;
-        public Filmetrics.FIRemote.FIMeasResults mResults;
+        public Filmetrics.FIRemote.FIMeasResults mMeasuredResults;
 
         // If mLastRet = 1, it means that something has gone wrong in the previous step
         public int mLastRet = 0;
@@ -225,7 +225,7 @@ namespace FilmetricsAnalysis
         {
             try
             {
-                mResults = mFIRemote.Measure(true);
+                mMeasuredResults = mFIRemote.Measure(true);
                 mLastRet = 0;
             }
             catch (Filmetrics.FIRemote.AcquisitionException e)
@@ -268,12 +268,21 @@ namespace FilmetricsAnalysis
         **  Emulates the function of clicking the save button
         **  Current file directory : C:\ProgramData\Filmetrics\Material
         **  */
-        public void SaveSpectrum(string fileDir)
+        public void SaveSpectrum(string fileDir, string userInput)
         {
             try
             {
-                Console.WriteLine("Currently saving to "+fileDir);
-                mFIRemote.SaveSpectrum(fileDir);
+                Console.WriteLine("Currently saving spectrum to "+fileDir+userInput+".fmspe");
+
+                // Save the spectrum file
+                mFIRemote.SaveSpectrum(fileDir+userInput+".fmspe");
+
+                // Save the measured results in a .txt file
+                Console.WriteLine("Currently saving txt file to " + fileDir + userInput + ".txt");
+                string totxt = mMeasuredResults.ToString();
+                string txtdir = fileDir + userInput + ".txt";
+                System.IO.File.WriteAllText(@txtdir, totxt);
+
                 Console.WriteLine("File saved!");
                 mLastRet = 0;
             }
