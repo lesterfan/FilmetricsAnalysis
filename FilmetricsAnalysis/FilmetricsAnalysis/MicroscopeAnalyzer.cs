@@ -215,6 +215,12 @@ namespace FilmetricsAnalysis
                 return;
             }
         }
+        /* 
+        **  Emulates the function of saving the
+        **  Returns 1 if an error occured, 0 if baseline is successfully taken.
+        **  */
+
+
 
     }
 }
