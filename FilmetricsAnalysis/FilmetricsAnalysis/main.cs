@@ -43,7 +43,6 @@ namespace FilmetricsAnalysis
                 else if (input == "l")
                 {
                     Console.WriteLine("Please enter in the name of the file you want the settings loaded to.");
-                    Console.WriteLine("The program will automatically save it as a '.fmspe' file. ");
                     Console.WriteLine("For now, all files will be saved in directory 'C:/Users/HMNL/Documents/Test/' ");
                     string currFileDir = "C:/Users/HMNL/Documents/Test/";
                     string user_input = Console.ReadLine();
