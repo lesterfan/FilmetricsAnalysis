@@ -232,7 +232,8 @@ namespace FilmetricsAnalysis
             {
                 // Cast the FIRemote result object to the class that I made so we can save it.
                 Filmetrics.FIRemote.FIMeasResults tempResults = mFIRemote.Measure(true);
-                Console.WriteLine(tempResults.ResultsSummary);
+                Console.WriteLine("The wavelengths are");
+                for (int i = 0; i < tempResults.PrimaryWavelengths.Length; ++i) Console.WriteLine(tempResults.PrimaryWavelengths[i]);
 
                 mMeasuredResults = new Result(tempResults);
                 mLastRet = 0;

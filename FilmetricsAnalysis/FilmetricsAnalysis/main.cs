@@ -56,7 +56,10 @@ namespace FilmetricsAnalysis
                     }
 
                     Console.WriteLine("Load successful!");
-                    Console.WriteLine("The loaded mTestString is " + loaded_result.ret);
+
+                    Console.WriteLine("The wavelengths are");
+                    for (int i = 0; i < loaded_result.PrimaryWavelengths.Length; ++i) Console.WriteLine(loaded_result.PrimaryWavelengths[i]);
+
                     Console.WriteLine("The summary is " + loaded_result.ResultsSummary);
                 }
             }
