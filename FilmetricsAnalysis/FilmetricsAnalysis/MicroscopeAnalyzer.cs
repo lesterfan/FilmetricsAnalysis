@@ -3,21 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+using System.IO;
 using Filmetrics;
 
 namespace FilmetricsAnalysis
 {
-    class MicroscopeAnalyzer
+    public class MicroscopeAnalyzer
     {
         public FIRemote mFIRemote;
         public string mReferenceMaterial;
         public Filmetrics.FIRemote.FIMeasResults mMeasuredResults;
 
+        // Test : If loaded from save, it will be a different value
+        public string mTestString;
+
         // If mLastRet = 1, it means that something has gone wrong in the previous step
         public int mLastRet = 0;
 
         // Constructor
-        public MicroscopeAnalyzer(bool show_gui = true)
+        public MicroscopeAnalyzer()
         {
             Console.WriteLine("Welcome to Filmetrics Analyzer - HMNL (c) 2016");
             try
@@ -266,10 +271,10 @@ namespace FilmetricsAnalysis
             }
         }
 
-
         /* 
         **  Emulates the function of clicking the save button
-        **  Current file directory : C:\ProgramData\Filmetrics\Material
+        **  @param fileDir : directory that it should be saved in
+        **  @param userInput : the name that the file should be stored as.
         **  */
         public void SaveSpectrum(string fileDir, string userInput)
         {
@@ -280,12 +285,6 @@ namespace FilmetricsAnalysis
                 // Save the spectrum file
                 mFIRemote.SaveSpectrum(fileDir+userInput+".fmspe");
 
-                // Save the measured results in a .txt file
-                Console.WriteLine("Currently saving txt file to " + fileDir + userInput + ".txt");
-                string totxt = mMeasuredResults.ToString();
-                string txtdir = fileDir + userInput + ".txt";
-                System.IO.File.WriteAllText(@txtdir, totxt);
-
                 Console.WriteLine("File saved!");
                 mLastRet = 0;
             }
@@ -295,6 +294,65 @@ namespace FilmetricsAnalysis
                 mLastRet = 1;
             }
         }
+
+        /* 
+        **  Saves the current state of MicroscopeAnalyzer variable to an .xml file 
+        **  @param fileDir : directory that it should be saved in
+        **  @param userInput : the name that the file should be stored as
+        **  */
+        public void SaveMyselfTo(string fileDir, string userInput)
+        {
+            Console.WriteLine("Now saving myself to " + fileDir + userInput + ".xml");
+
+            try {
+                XmlSerializer ser = new XmlSerializer(typeof(MicroscopeAnalyzer));
+
+                // Deserialize the variable from the specific directory indicated by user.
+                using (var stream = File.Create(fileDir + userInput + ".xml"))
+                {
+                    ser.Serialize(stream, this);
+                }
+
+                Console.WriteLine("I saved myself!");
+                mLastRet = 0;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception caught! " + e.ToString());
+                mLastRet = 1;
+            }
+        }
+
+        /* 
+        **  Reverts the state of the variable 'this' to the state of MicroscopeAnalyzer saved in the .xml file specified by the user
+        **  @param fileDir : directory that it should be saved in
+        **  @param userInput : the name that the file should be stored as
+        **  */
+        public static MicroscopeAnalyzer LoadMicroscopeAnalyzerFrom(string fileDir, string userInput)
+        {
+            Console.WriteLine("Now loading myself to " + fileDir + userInput + ".xml");
+
+            try
+            {
+                XmlSerializer ser = new XmlSerializer(typeof(MicroscopeAnalyzer));
+
+                MicroscopeAnalyzer result;
+
+                using (var stream = File.OpenRead(fileDir + userInput + ".xml"))
+                {
+                    result = (MicroscopeAnalyzer)ser.Deserialize(stream);
+                }
+                Console.WriteLine("Successfully loaded!");
+
+                return result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception caught! "+e.ToString());
+                return null;
+            }
+        }
+
 
 
     }

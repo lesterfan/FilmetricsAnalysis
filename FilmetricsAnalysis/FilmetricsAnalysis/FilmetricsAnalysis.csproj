@@ -49,6 +49,7 @@
     <Compile Include="MicroscopeAnalyzer.cs" />
     <Compile Include="main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
