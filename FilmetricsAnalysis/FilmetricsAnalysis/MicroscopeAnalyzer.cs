@@ -231,7 +231,10 @@ namespace FilmetricsAnalysis
             try
             {
                 // Cast the FIRemote result object to the class that I made so we can save it.
-                mMeasuredResults = new Result(mFIRemote.Measure(true));
+                Filmetrics.FIRemote.FIMeasResults tempResults = mFIRemote.Measure(true);
+                Console.WriteLine(tempResults.ResultsSummary);
+
+                mMeasuredResults = new Result(tempResults);
                 mLastRet = 0;
             }
             catch (Filmetrics.FIRemote.AcquisitionException e)

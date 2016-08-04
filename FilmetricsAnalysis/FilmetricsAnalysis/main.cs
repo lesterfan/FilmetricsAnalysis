@@ -57,6 +57,7 @@ namespace FilmetricsAnalysis
 
                     Console.WriteLine("Load successful!");
                     Console.WriteLine("The loaded mTestString is " + loaded_result.ret);
+                    Console.WriteLine("The summary is " + loaded_result.ResultsSummary);
                 }
             }
         }
