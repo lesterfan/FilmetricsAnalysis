@@ -11,6 +11,7 @@ namespace FilmetricsAnalysis
     {
         public FIRemote mFIRemote;
         public string mReferenceMaterial;
+        public Filmetrics.FIRemote.FIMeasResults mResults;
 
         // If mLastRet = 1, it means that something has gone wrong in the previous step
         public int mLastRet = 0;
@@ -104,7 +105,6 @@ namespace FilmetricsAnalysis
                 mLastRet = 1;
             }
         }
-        // current file directory : C:\ProgramData\Filmetrics\Material
 
         //while (munchkinsInBox){
             //Lester.eatMunchkin()}
@@ -219,6 +219,74 @@ namespace FilmetricsAnalysis
                 return;
             }
         }
+
+
+        /* 
+        **  Emulates the function of clicking the measure button
+        **  */
+        public void Measure()
+        {
+            try
+            {
+                mResults = mFIRemote.Measure(true);
+                mLastRet = 0;
+            }
+            catch (Filmetrics.FIRemote.AcquisitionException e)
+            {
+                if (e.Type == FIRemote.AcquisitionException.ExceptionType.Saturation)
+                {
+                    Console.WriteLine("Spectrometer saturation. Repeat baseline or reduce integration time if acquisition settings measurement timing is set to manual.");
+                }
+                else if (e.Type == FIRemote.AcquisitionException.ExceptionType.InvalidAcquisitionSettings)
+                {
+                    Console.WriteLine("Invalid acquisition settings. Verify that a valid baseline has been established.");
+                }
+                else if (e.Type == FIRemote.AcquisitionException.ExceptionType.Unknown)
+                {
+                    if (e.Message == "")
+                    {
+                        Console.WriteLine("Unknown acquisition error. ");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error attempting to measure. Exception message is: " + e.Message);
+                    }
+                }
+                mLastRet = 1;
+            }
+            catch (Filmetrics.FIRemote.SpectrumAnalysisException e)
+            {
+                Console.WriteLine("Error attempting to analyze spectrum. Error message is: " + e.Message);
+                mLastRet = 1;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception caught! " + e.ToString());
+                mLastRet = 1;
+            }
+        }
+
+
+        /* 
+        **  Emulates the function of clicking the save button
+        **  Current file directory : C:\ProgramData\Filmetrics\Material
+        **  */
+        public void SaveSpectrum(string fileDir)
+        {
+            try
+            {
+                Console.WriteLine("Currently saving to "+fileDir);
+                mFIRemote.SaveSpectrum(fileDir);
+                Console.WriteLine("File saved!");
+                mLastRet = 0;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception caught! " + e.ToString());
+                mLastRet = 1;
+            }
+        }
+
 
     }
 }
