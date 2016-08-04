@@ -13,7 +13,7 @@ namespace FilmetricsAnalysis
     {
         public FIRemote mFIRemote;
         public string mReferenceMaterial;
-        public Filmetrics.FIRemote.FIMeasResults mMeasuredResults;
+        public Result mMeasuredResults;
 
         // Test : If loaded from save, it will be a different value
         public string mTestString;
@@ -233,7 +233,8 @@ namespace FilmetricsAnalysis
         {
             try
             {
-                mMeasuredResults = mFIRemote.Measure(true);
+                // Cast the FIRemote result object to the class that I made so we can save it.
+                mMeasuredResults = new Result(mFIRemote.Measure(true));
                 mLastRet = 0;
             }
             catch (Filmetrics.FIRemote.AcquisitionException e)
