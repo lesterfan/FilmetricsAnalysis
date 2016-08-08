@@ -102,7 +102,7 @@ namespace FilmetricsAnalysis
             }
             catch (Filmetrics.FIRemote.ArgumentException e)
             {
-                Console.WriteLine("Bad argument. Exception caught. Message is: " + e.Message + "\nOffending argument is : " + e.ParamName + "\nNote: if acquisition mode is transmittance only, then the reference material should usually be set to 1 in order to avoid this error.");
+                Console.WriteLine("Bad argument. Exception caught. Message is: " + e.Message + "\\nOffending argument is : " + e.ParamName + "\\nNote: if acquisition mode is transmittance only, then the reference material should usually be set to 1 in order to avoid this error.");
                 mLastRet = 1;
             }
             catch (Exception e)
@@ -140,8 +140,8 @@ namespace FilmetricsAnalysis
             catch (Filmetrics.FIRemote.InvalidBackgroundException e)
             {
                 Console.WriteLine("ERROR! : Background spectrum and reference spectrum are almost exactly the same. Please make sure that the reference sample has "
-                    + "\nbeen removed from the stage and repeat acquisition of the Background spectrum. If this error happens again, you must cancel "
-                    + "\nand start the baseline procedure over from the beginning.");
+                    + "\\nbeen removed from the stage and repeat acquisition of the Background spectrum. If this error happens again, you must cancel "
+                    + "\\nand start the baseline procedure over from the beginning.");
 
                 mLastRet = 1;
             }

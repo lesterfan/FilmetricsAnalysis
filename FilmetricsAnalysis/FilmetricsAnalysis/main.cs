@@ -26,7 +26,7 @@ namespace FilmetricsAnalysis
                     mAnalyzer.Measure();
                     if (mAnalyzer.mLastRet == 1) Console.WriteLine("Something went wrong in the last step!");
                 }
-                else if (input == "s")                                // Current file directory : C:\ProgramData\Filmetrics\Material
+                else if (input == "s")                                // Current file directory : C:\\ProgramData\\Filmetrics\\Material
                 {
                     mAnalyzer.mMeasuredResults.ret = "Saved!";
 
