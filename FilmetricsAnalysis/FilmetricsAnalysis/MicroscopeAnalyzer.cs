@@ -13,6 +13,9 @@ namespace FilmetricsAnalysis
     {
         public FIRemote mFIRemote;
         public string mReferenceMaterial;
+        public Filmetrics.FIRemote.FIMeasResults mFIRemoteResults;
+
+        // This is the structure that we're interested in
         public Result mMeasuredResults;
 
         // If mLastRet = 1, it means that something has gone wrong in the previous step
@@ -231,11 +234,14 @@ namespace FilmetricsAnalysis
             try
             {
                 // Cast the FIRemote result object to the class that I made so we can save it.
-                Filmetrics.FIRemote.FIMeasResults tempResults = mFIRemote.Measure(true);
-                Console.WriteLine("The wavelengths are");
-                for (int i = 0; i < tempResults.PrimaryWavelengths.Length; ++i) Console.WriteLine(tempResults.PrimaryWavelengths[i]);
+                mFIRemoteResults = mFIRemote.Measure(true);
 
-                mMeasuredResults = new Result(tempResults);
+                // Logging to check.
+                Console.WriteLine("The wavelengths are");
+                for (int i = 0; i < mFIRemoteResults.PrimaryWavelengths.Length; ++i) Console.WriteLine(mFIRemoteResults.PrimaryWavelengths[i]);
+                Console.WriteLine("The summary is " + mFIRemoteResults.ResultsSummary);
+
+                mMeasuredResults = new Result(mFIRemoteResults);
                 mLastRet = 0;
             }
             catch (Filmetrics.FIRemote.AcquisitionException e)

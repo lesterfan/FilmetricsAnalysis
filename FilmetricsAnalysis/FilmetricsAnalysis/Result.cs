@@ -17,22 +17,22 @@ namespace FilmetricsAnalysis
         public string ret;
 
 
-        public bool AlarmTriggered { get; }
-        public float GOF { get; }
-        public bool GofIsOK { get; }
-        public float[] LayerRoughnesses { get; }
-        public float[] LayerThicknesses { get; }
-        public float[] MeasFFTIntensity { get; }
-        public float[] MeasFFTThickness { get; }
-        public float[] PrimaryCalcSpectrum { get; }
-        public float[] PrimaryCalcWavelengths { get; }
-        public float[] PrimarySpectrum { get; }
-        public float[] PrimaryWavelengths { get; }
-        public string ResultsSummary { get; }
-        public System.Drawing.Image SampleImage { get; }
-        public float[] SpectrumAnalysisExtremaValues { get; }
-        public float[] SpectrumAnalysisExtremaWavelengthes { get; }
-        public float[] SpectrumAnalysisMeanValues { get; }
+        public bool AlarmTriggered;
+        public float GOF;
+        public bool GofIsOK;
+        public float[] LayerRoughnesses;
+        public float[] LayerThicknesses;
+        public float[] MeasFFTIntensity;
+        public float[] MeasFFTThickness;
+        public float[] PrimaryCalcSpectrum;
+        public float[] PrimaryCalcWavelengths;
+        public float[] PrimarySpectrum;
+        public float[] PrimaryWavelengths;
+        public string ResultsSummary;
+        public System.Drawing.Image SampleImage;
+        public float[] SpectrumAnalysisExtremaValues;
+        public float[] SpectrumAnalysisExtremaWavelengthes;
+        public float[] SpectrumAnalysisMeanValues;
 
         public Result() {}
 
@@ -41,19 +41,19 @@ namespace FilmetricsAnalysis
             this.AlarmTriggered = e.AlarmTriggered;
             this.GOF = e.GOF;
             this.GofIsOK = e.GofIsOK;
-            this.LayerRoughnesses = e.LayerRoughnesses;
-            this.LayerThicknesses = e.LayerThicknesses;
-            this.MeasFFTIntensity = e.MeasFFTIntensity;
-            this.MeasFFTThickness = e.MeasFFTThickness;
-            this.PrimaryCalcSpectrum = e.PrimaryCalcSpectrum;
-            this.PrimaryCalcWavelengths = e.PrimaryCalcWavelengths;
-            this.PrimarySpectrum = e.PrimarySpectrum;
-            this.PrimaryWavelengths = e.PrimaryWavelengths;
-            this.ResultsSummary = e.ResultsSummary;
-            this.SampleImage = e.SampleImage;
-            this.SpectrumAnalysisExtremaValues = e.SpectrumAnalysisExtremaValues;
-            this.SpectrumAnalysisExtremaWavelengthes = e.SpectrumAnalysisExtremaWavelengthes;
-            this.SpectrumAnalysisMeanValues = e.SpectrumAnalysisMeanValues;
+            this.LayerRoughnesses =                     (float[]) e.LayerRoughnesses.Clone();
+            this.LayerThicknesses =                     (float[]) e.LayerThicknesses.Clone();
+            this.MeasFFTIntensity =                     (float[]) e.MeasFFTIntensity.Clone();
+            this.MeasFFTThickness =                     (float[]) e.MeasFFTThickness.Clone();
+            this.PrimaryCalcSpectrum =                  (float[]) e.PrimaryCalcSpectrum.Clone();
+            this.PrimaryCalcWavelengths =               (float[]) e.PrimaryCalcWavelengths.Clone();
+            this.PrimarySpectrum =                      (float[]) e.PrimarySpectrum.Clone();
+            this.PrimaryWavelengths =                   (float[]) e.PrimaryWavelengths.Clone();
+            this.ResultsSummary =                       String.Copy(e.ResultsSummary);
+            this.SampleImage =                          (System.Drawing.Image) e.SampleImage.Clone();
+            this.SpectrumAnalysisExtremaValues =        (float[]) e.SpectrumAnalysisExtremaValues.Clone();
+            this.SpectrumAnalysisExtremaWavelengthes =  (float[]) e.SpectrumAnalysisExtremaWavelengthes.Clone();
+            this.SpectrumAnalysisMeanValues =           (float[]) e.SpectrumAnalysisMeanValues.Clone();
         }
     }
 }
