@@ -41,19 +41,19 @@ namespace FilmetricsAnalysis
             this.AlarmTriggered = e.AlarmTriggered;
             this.GOF = e.GOF;
             this.GofIsOK = e.GofIsOK;
-            this.LayerRoughnesses =                     e.LayerRoughnesses == null? null : (float[]) e.LayerRoughnesses.Clone();
-            this.LayerThicknesses =                     e.LayerThicknesses == null? null : (float[]) e.LayerThicknesses.Clone();
-            this.MeasFFTIntensity =                     e.MeasFFTIntensity == null? null : (float[]) e.MeasFFTIntensity.Clone();
-            this.MeasFFTThickness =                     e.MeasFFTThickness == null? null : (float[]) e.MeasFFTThickness.Clone();
-            this.PrimaryCalcSpectrum =                  (float[]) e.PrimaryCalcSpectrum.Clone();
-            this.PrimaryCalcWavelengths =               (float[]) e.PrimaryCalcWavelengths.Clone();
-            this.PrimarySpectrum =                      (float[]) e.PrimarySpectrum.Clone();
-            this.PrimaryWavelengths =                   (float[]) e.PrimaryWavelengths.Clone();
-            this.ResultsSummary =                       String.Copy(e.ResultsSummary);
-            this.SampleImage =                          (System.Drawing.Image) e.SampleImage.Clone();
-            this.SpectrumAnalysisExtremaValues =        (float[]) e.SpectrumAnalysisExtremaValues.Clone();
-            this.SpectrumAnalysisExtremaWavelengthes =  (float[]) e.SpectrumAnalysisExtremaWavelengthes.Clone();
-            this.SpectrumAnalysisMeanValues =           (float[]) e.SpectrumAnalysisMeanValues.Clone();
+            this.LayerRoughnesses =                     e.LayerRoughnesses                      == null?     null : (float[]) e.LayerRoughnesses.Clone();
+            this.LayerThicknesses =                     e.LayerThicknesses                      == null?     null : (float[]) e.LayerThicknesses.Clone();
+            this.MeasFFTIntensity =                     e.MeasFFTIntensity                      == null?     null : (float[]) e.MeasFFTIntensity.Clone();
+            this.MeasFFTThickness =                     e.MeasFFTThickness                      == null?     null : (float[]) e.MeasFFTThickness.Clone();
+            this.PrimaryCalcSpectrum =                  e.PrimaryCalcSpectrum                   == null?     null : (float[]) e.PrimaryCalcSpectrum.Clone();
+            this.PrimaryCalcWavelengths =               e.PrimaryCalcWavelengths                == null?     null : (float[]) e.PrimaryCalcWavelengths.Clone();
+            this.PrimarySpectrum =                      e.PrimarySpectrum                       == null?     null : (float[]) e.PrimarySpectrum.Clone();
+            this.PrimaryWavelengths =                   e.PrimaryWavelengths                    == null?     null : (float[]) e.PrimaryWavelengths.Clone();
+            this.ResultsSummary =                       e.ResultsSummary                        == null?     null : String.Copy(e.ResultsSummary);
+            this.SampleImage =                          e.SampleImage                           == null?     null : (System.Drawing.Image) e.SampleImage.Clone();
+            this.SpectrumAnalysisExtremaValues =        e.SpectrumAnalysisExtremaValues         == null?     null : (float[]) e.SpectrumAnalysisExtremaValues.Clone();
+            this.SpectrumAnalysisExtremaWavelengthes =  e.SpectrumAnalysisExtremaWavelengthes   == null?     null : (float[]) e.SpectrumAnalysisExtremaWavelengthes.Clone();
+            this.SpectrumAnalysisMeanValues =           e.SpectrumAnalysisMeanValues            == null?     null : (float[]) e.SpectrumAnalysisMeanValues.Clone();
         }
     }
 }
