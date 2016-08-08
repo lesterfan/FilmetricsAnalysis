@@ -29,7 +29,6 @@ namespace FilmetricsAnalysis
         public float[] PrimarySpectrum;
         public float[] PrimaryWavelengths;
         public string ResultsSummary;
-        public System.Drawing.Image SampleImage;
         public float[] SpectrumAnalysisExtremaValues;
         public float[] SpectrumAnalysisExtremaWavelengthes;
         public float[] SpectrumAnalysisMeanValues;
@@ -50,7 +49,6 @@ namespace FilmetricsAnalysis
             this.PrimarySpectrum =                      e.PrimarySpectrum                       == null?     null : (float[]) e.PrimarySpectrum.Clone();
             this.PrimaryWavelengths =                   e.PrimaryWavelengths                    == null?     null : (float[]) e.PrimaryWavelengths.Clone();
             this.ResultsSummary =                       e.ResultsSummary                        == null?     null : String.Copy(e.ResultsSummary);
-            this.SampleImage =                          e.SampleImage                           == null?     null : (System.Drawing.Image) e.SampleImage.Clone();
             this.SpectrumAnalysisExtremaValues =        e.SpectrumAnalysisExtremaValues         == null?     null : (float[]) e.SpectrumAnalysisExtremaValues.Clone();
             this.SpectrumAnalysisExtremaWavelengthes =  e.SpectrumAnalysisExtremaWavelengthes   == null?     null : (float[]) e.SpectrumAnalysisExtremaWavelengthes.Clone();
             this.SpectrumAnalysisMeanValues =           e.SpectrumAnalysisMeanValues            == null?     null : (float[]) e.SpectrumAnalysisMeanValues.Clone();

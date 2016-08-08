@@ -315,11 +315,14 @@ namespace FilmetricsAnalysis
             try {
                 XmlSerializer ser = new XmlSerializer(typeof(Result));
 
-                // Deserialize the variable from the specific directory indicated by user.
+                // Serialize the variable to the specific directory indicated by user using XML
                 using (var stream = File.Create(fileDir + userInput + ".xml"))
                 {
                     ser.Serialize(stream, mMeasuredResults);
                 }
+
+                // Save the sample image to the directory
+                mFIRemoteResults.SampleImage.Save(fileDir + userInput + ".bmp");
 
                 Console.WriteLine("I saved myself!");
                 mLastRet = 0;

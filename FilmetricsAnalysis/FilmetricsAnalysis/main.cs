@@ -10,6 +10,7 @@ namespace FilmetricsAnalysis
 {
     class main
     {
+        
         static void Main(string[] args)
         {
 
@@ -65,34 +66,34 @@ namespace FilmetricsAnalysis
             }
         }
 
-        /**
-        // This code shows how to use the XmlSerializer : static void Main(string[] args)
-        // This code shows how to use the XmlSerializer : {
-        // This code shows how to use the XmlSerializer :     XmlSerializer ser = new XmlSerializer(typeof(RandomTest));
-        // This code shows how to use the XmlSerializer : 
-        // This code shows how to use the XmlSerializer :     RandomTest test;
-        // This code shows how to use the XmlSerializer : 
-        // This code shows how to use the XmlSerializer :     // Read
-        // This code shows how to use the XmlSerializer :     using (var stream = File.OpenRead("C:/Users/Huafeng/Desktop/LoadingTest/test.xml"))
-        // This code shows how to use the XmlSerializer :     {
-        // This code shows how to use the XmlSerializer :         test = (RandomTest)ser.Deserialize(stream);
-        // This code shows how to use the XmlSerializer :     }
-        // This code shows how to use the XmlSerializer : 
-        // This code shows how to use the XmlSerializer :     Console.WriteLine(test.m_x);
-        // This code shows how to use the XmlSerializer :     Console.WriteLine(test.m_y);
-        // This code shows how to use the XmlSerializer :     Console.ReadLine();
-        // This code shows how to use the XmlSerializer : 
-        // This code shows how to use the XmlSerializer :     RandomTest a = new RandomTest(1, 2);
-        // This code shows how to use the XmlSerializer :     
-        // This code shows how to use the XmlSerializer :     XmlSerializer ser = new XmlSerializer(typeof(RandomTest));
-        // This code shows how to use the XmlSerializer :     
-        // This code shows how to use the XmlSerializer :     // Write
-        // This code shows how to use the XmlSerializer :     using (var stream = File.Create("C:/Users/Huafeng/Desktop/LoadingTest/test.xml"))
-        // This code shows how to use the XmlSerializer :     {
-        // This code shows how to use the XmlSerializer :         ser.Serialize(stream, a);
-        // This code shows how to use the XmlSerializer :     }
-        // This code shows how to use the XmlSerializer :     
-        // This code shows how to use the XmlSerializer :     Console.WriteLine("Test saved!");
-        // This code shows how to use the XmlSerializer : } **/
+        
+        // static void Main(string[] args)
+        // {
+        //     // XmlSerializer ser = new XmlSerializer(typeof(RandomTest));
+        //     // 
+        //     // RandomTest test;
+        //     // 
+        //     // // Read
+        //     // using (var stream = File.OpenRead("C:/Users/Huafeng/Desktop/LoadingTest/test.xml"))
+        //     // {
+        //     //     test = (RandomTest)ser.Deserialize(stream);
+        //     // }
+        //     // 
+        //     // Console.WriteLine(test.m_x);
+        //     // Console.WriteLine(test.m_y);
+        //     // Console.ReadLine();
+        // 
+        //     RandomTest a = new RandomTest(1, 2);
+        //     
+        //     DataContractSerializer ser = new XmlSerializer(typeof(RandomTest));
+        //     
+        //     // Write
+        //     using (var stream = File.Create("C:/Users/Huafeng/Desktop/LoadingTest/test.xml"))
+        //     {
+        //         ser.Serialize(stream, a);
+        //     }
+        //     
+        //     Console.WriteLine("Test saved!");
+        // }
     }
 }
