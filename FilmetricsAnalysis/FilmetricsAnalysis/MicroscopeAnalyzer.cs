@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.IO;
 using Filmetrics;
+using System.Drawing;
 
 namespace FilmetricsAnalysis
 {
@@ -322,7 +323,9 @@ namespace FilmetricsAnalysis
                 }
 
                 // Save the sample image to the directory as .bmp
-                mFIRemoteResults.SampleImage.Save(fileDir + userInput + ".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
+                // First make a new Bitmap around it, then save that
+                var temp_image = new Bitmap(mFIRemoteResults.SampleImage);
+                temp_image.Save(fileDir + userInput + ".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
 
                 Console.WriteLine("I saved myself!");
                 mLastRet = 0;
