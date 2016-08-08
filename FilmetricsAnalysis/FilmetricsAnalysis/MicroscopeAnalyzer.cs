@@ -321,8 +321,8 @@ namespace FilmetricsAnalysis
                     ser.Serialize(stream, mMeasuredResults);
                 }
 
-                // Save the sample image to the directory
-                mFIRemoteResults.SampleImage.Save(fileDir + userInput + ".bmp");
+                // Save the sample image to the directory as .bmp
+                mFIRemoteResults.SampleImage.Save(fileDir + userInput + ".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
 
                 Console.WriteLine("I saved myself!");
                 mLastRet = 0;
