@@ -32,7 +32,8 @@ namespace FilmetricsAnalysis
         public float[] SpectrumAnalysisExtremaWavelengthes;
         public float[] SpectrumAnalysisMeanValues;
 
-        public Result() {}
+        public Result() {
+        }
 
         public Result(Filmetrics.FIRemote.FIMeasResults e)
         {
