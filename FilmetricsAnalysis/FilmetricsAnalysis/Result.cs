@@ -14,7 +14,7 @@ namespace FilmetricsAnalysis
 
     public class Result
     {
-        public string ret;
+        public string ret = "";
 
 
         public bool AlarmTriggered;
@@ -41,10 +41,10 @@ namespace FilmetricsAnalysis
             this.AlarmTriggered = e.AlarmTriggered;
             this.GOF = e.GOF;
             this.GofIsOK = e.GofIsOK;
-            this.LayerRoughnesses =                     (float[]) e.LayerRoughnesses.Clone();
-            this.LayerThicknesses =                     (float[]) e.LayerThicknesses.Clone();
-            this.MeasFFTIntensity =                     (float[]) e.MeasFFTIntensity.Clone();
-            this.MeasFFTThickness =                     (float[]) e.MeasFFTThickness.Clone();
+            this.LayerRoughnesses =                     e.LayerRoughnesses == null? null : (float[]) e.LayerRoughnesses.Clone();
+            this.LayerThicknesses =                     e.LayerThicknesses == null? null : (float[]) e.LayerThicknesses.Clone();
+            this.MeasFFTIntensity =                     e.MeasFFTIntensity == null? null : (float[]) e.MeasFFTIntensity.Clone();
+            this.MeasFFTThickness =                     e.MeasFFTThickness == null? null : (float[]) e.MeasFFTThickness.Clone();
             this.PrimaryCalcSpectrum =                  (float[]) e.PrimaryCalcSpectrum.Clone();
             this.PrimaryCalcWavelengths =               (float[]) e.PrimaryCalcWavelengths.Clone();
             this.PrimarySpectrum =                      (float[]) e.PrimarySpectrum.Clone();
