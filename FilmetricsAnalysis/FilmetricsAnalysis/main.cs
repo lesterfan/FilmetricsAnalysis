@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.IO;
+using MicroscopeAnalyzerLibrary;
 
 namespace FilmetricsAnalysis
 {
@@ -65,35 +66,5 @@ namespace FilmetricsAnalysis
                 }
             }
         }
-
-        
-        // static void Main(string[] args)
-        // {
-        //     // XmlSerializer ser = new XmlSerializer(typeof(RandomTest));
-        //     // 
-        //     // RandomTest test;
-        //     // 
-        //     // // Read
-        //     // using (var stream = File.OpenRead("C:/Users/Huafeng/Desktop/LoadingTest/test.xml"))
-        //     // {
-        //     //     test = (RandomTest)ser.Deserialize(stream);
-        //     // }
-        //     // 
-        //     // Console.WriteLine(test.m_x);
-        //     // Console.WriteLine(test.m_y);
-        //     // Console.ReadLine();
-        // 
-        //     RandomTest a = new RandomTest(1, 2);
-        //     
-        //     DataContractSerializer ser = new XmlSerializer(typeof(RandomTest));
-        //     
-        //     // Write
-        //     using (var stream = File.Create("C:/Users/Huafeng/Desktop/LoadingTest/test.xml"))
-        //     {
-        //         ser.Serialize(stream, a);
-        //     }
-        //     
-        //     Console.WriteLine("Test saved!");
-        // }
     }
 }
