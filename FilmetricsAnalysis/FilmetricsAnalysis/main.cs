@@ -44,12 +44,12 @@ namespace FilmetricsAnalysis
                 }
                 else if (input == "l")
                 {
-                    Console.WriteLine("Please enter in the name of the file you want the settings loaded to.");
+                    Console.WriteLine("Please enter in the name of the file you want the settings loaded from.");
                     Console.WriteLine("For now, all files will be saved in directory 'C:/Users/HMNL/Documents/Test/' ");
                     string currFileDir = "C:/Users/HMNL/Documents/Test/";
                     string user_input = Console.ReadLine();
 
-                    Result loaded_result = MicroscopeAnalyzer.LoadMicroscopeAnalyzerFrom(currFileDir, user_input);
+                    Result loaded_result = MicroscopeAnalyzer.LoadResultsFrom(currFileDir, user_input);
                     
                     if (loaded_result == null)
                     {
